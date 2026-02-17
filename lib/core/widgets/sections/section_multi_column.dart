@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
-import 'package:gyawun/core/widgets/tiles/section_list_tile.dart';
+import 'package:songify/core/widgets/tiles/section_list_tile.dart';
 
 class SectionMultiColumn extends StatefulWidget {
   const SectionMultiColumn({super.key, required this.items, this.maxItem});

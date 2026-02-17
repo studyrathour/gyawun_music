@@ -2,9 +2,9 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:gyawun/core/widgets/sections/section_multi_column.dart';
-import 'package:gyawun/core/widgets/sections/section_row.dart';
-import 'package:gyawun/core/widgets/song_tile.dart';
+import 'package:songify/core/widgets/sections/section_multi_column.dart';
+import 'package:songify/core/widgets/sections/section_row.dart';
+import 'package:songify/core/widgets/song_tile.dart';
 import 'package:yt_music/ytmusic.dart';
 
 import '../../generated/l10n.dart';

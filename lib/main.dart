@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
-import 'package:gyawun/themes/theme.dart';
+import 'package:songify/themes/theme.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:just_audio_media_kit/just_audio_media_kit.dart';
@@ -29,7 +29,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isAndroid) {
     await JustAudioBackground.init(
-      androidNotificationChannelId: 'com.jhelum.gyawun.audio',
+      androidNotificationChannelId: 'com.songify.app.audio',
       androidNotificationChannelName: 'Audio playback',
       androidNotificationOngoing: true,
       // androidStopForegroundOnPause: false,
@@ -39,7 +39,7 @@ void main() async {
   if (Platform.isWindows || Platform.isLinux) {
     JustAudioMediaKit.ensureInitialized();
     JustAudioMediaKit.bufferSize = 8 * 1024 * 1024;
-    JustAudioMediaKit.title = 'Gyawun Music';
+    JustAudioMediaKit.title = 'Songify';
     JustAudioMediaKit.prefetchPlaylist = true;
     JustAudioMediaKit.pitch = true;
   }
@@ -85,13 +85,13 @@ void main() async {
         ChangeNotifierProvider(create: (_) => mediaPlayer),
         ChangeNotifierProvider(create: (_) => libraryService),
       ],
-      child: const Gyawun(),
+      child: const Songify(),
     ),
   );
 }
 
-class Gyawun extends StatelessWidget {
-  const Gyawun({super.key});
+class Songify extends StatelessWidget {
+  const Songify({super.key});
   @override
   Widget build(BuildContext context) {
     return DynamicColorBuilder(
@@ -101,14 +101,14 @@ class Gyawun extends StatelessWidget {
                     darkScheme != null
                 ? darkScheme.primary
                 : context.watch<SettingsManager>().accentColor) ??
-            Colors.red;
+            const Color(0xFF4725f4);
         final isPureBlack = context.watch<SettingsManager>().amoledBlack;
         return Shortcuts(
           shortcuts: <LogicalKeySet, Intent>{
             LogicalKeySet(LogicalKeyboardKey.select): const ActivateIntent(),
           },
           child: MaterialApp.router(
-            title: 'Gyawun Music',
+            title: 'Songify',
             routerConfig: router,
             locale: Locale(context.watch<SettingsManager>().language['value']!),
             localizationsDelegates: const [

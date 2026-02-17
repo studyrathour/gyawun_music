@@ -2,10 +2,10 @@
 // import 'package:flutter/material.dart';
 // import 'package:get_it/get_it.dart';
 // import 'package:go_router/go_router.dart';
-// import 'package:gyawun/generated/l10n.dart';
-// import 'package:gyawun/themes/colors.dart';
-// import 'package:gyawun/utils/adaptive_widgets/buttons.dart';
-// import 'package:gyawun/utils/adaptive_widgets/icons.dart';
+// import 'package:songify/generated/l10n.dart';
+// import 'package:songify/themes/colors.dart';
+// import 'package:songify/utils/adaptive_widgets/buttons.dart';
+// import 'package:songify/utils/adaptive_widgets/icons.dart';
 // import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 // import 'package:yt_music/ytmusic.dart';
 

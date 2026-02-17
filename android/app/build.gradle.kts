@@ -28,7 +28,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace = "com.jhelum.gyawun"
+    namespace = "com.songify.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -42,7 +42,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.jhelum.gyawun"
+        applicationId = "com.songify.app"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
@@ -57,12 +57,12 @@ android {
         create("beta") {
             dimension = "default"
             applicationIdSuffix = ".beta"
-            resValue("string", "app_name", "Gyawun Music Beta")
+            resValue("string", "app_name", "Songify Beta")
         }
 
         create("production") {
             dimension = "default"
-            resValue("string", "app_name", "Gyawun Music")
+            resValue("string", "app_name", "Songify")
         }
     }
 

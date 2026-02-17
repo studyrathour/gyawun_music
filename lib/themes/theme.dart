@@ -6,7 +6,7 @@ import 'typography.dart';
 class AppTheme {
   static ThemeData light({Color? primary}) {
     final colorScheme = ColorScheme.fromSeed(
-            seedColor: primary??Colors.red,
+            seedColor: primary??const Color(0xFF4725f4),
             brightness: Brightness.light,
           );
 
@@ -34,7 +34,7 @@ class AppTheme {
 
   static ThemeData dark({Color? primary, bool isPureBlack = false}) {
     final colorScheme = ColorScheme.fromSeed(
-            seedColor: primary??Colors.deepPurpleAccent,
+            seedColor: primary??const Color(0xFF4725f4),
             brightness: Brightness.dark,
           );
     return ThemeData.dark(useMaterial3: true).copyWith(

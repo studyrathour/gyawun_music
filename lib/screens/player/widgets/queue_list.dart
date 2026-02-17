@@ -2,9 +2,9 @@ import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:gyawun/generated/l10n.dart';
-import 'package:gyawun/services/media_player.dart';
-import 'package:gyawun/utils/song_thumbnail.dart';
+import 'package:songify/generated/l10n.dart';
+import 'package:songify/services/media_player.dart';
+import 'package:songify/utils/song_thumbnail.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 

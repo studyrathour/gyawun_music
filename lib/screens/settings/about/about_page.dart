@@ -1,8 +1,8 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:gyawun/core/widgets/expressive_app_bar.dart';
-import 'package:gyawun/core/widgets/expressive_list_group.dart';
-import 'package:gyawun/core/widgets/expressive_list_tile.dart';
+import 'package:songify/core/widgets/expressive_app_bar.dart';
+import 'package:songify/core/widgets/expressive_list_group.dart';
+import 'package:songify/core/widgets/expressive_list_tile.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -88,7 +88,7 @@ class _AboutPageState extends State<AboutPage> {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Gyawun Music',
+                        'Songify',
                         style: textTheme.headlineMedium?.copyWith(
                           fontWeight: FontWeight.w700,
                           color: colorScheme.onSurface,
@@ -127,68 +127,9 @@ class _AboutPageState extends State<AboutPage> {
                     ExpressiveListTile(
                       leading: const SettingsColorIcon(icon: Icons.person),
                       title: const Text("Developer"),
-                      subtitle: const Text("Sheikh Haziq"),
+                      subtitle: const Text("Suraj Singh Rathour"),
                       trailing: const Icon(FluentIcons.chevron_right_24_filled),
-                      onTap: () => _open('https://github.com/sheikhhaziq'),
-                    ),
-                    ExpressiveListTile(
-                      leading: const SettingsColorIcon(icon: Icons.link),
-                      title: const Text("Website"),
-                      trailing: const Icon(FluentIcons.chevron_right_24_filled),
-                      onTap: () => _open('https://gyawunmusic.vercel.app'),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 24),
-
-                ExpressiveListGroup(
-                  title: "Community",
-                  children: [
-                    ExpressiveListTile(
-                      leading: const SettingsColorIcon(icon: Icons.people),
-                      title: const Text("Contributors"),
-                      trailing: const Icon(FluentIcons.chevron_right_24_filled),
-                      onTap: () => _open(
-                        'https://github.com/jhelumcorp/gyawun/contributors',
-                      ),
-                    ),
-                    ExpressiveListTile(
-                      leading: const SettingsColorIcon(icon: Icons.send),
-                      title: const Text("Telegram"),
-                      trailing: const Icon(FluentIcons.chevron_right_24_filled),
-                      onTap: () => _open('https://t.me/jhelumcorp'),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 24),
-
-                ExpressiveListGroup(
-                  title: "Development",
-                  children: [
-                    ExpressiveListTile(
-                      leading: const SettingsColorIcon(icon: Icons.code),
-                      title: const Text("Source Code"),
-                      trailing: const Icon(FluentIcons.chevron_right_24_filled),
-                      onTap: () =>
-                          _open('https://github.com/jhelumcorp/gyawun'),
-                    ),
-                    ExpressiveListTile(
-                      leading: const SettingsColorIcon(icon: Icons.bug_report),
-                      title: const Text("Bug Report"),
-                      trailing: const Icon(FluentIcons.chevron_right_24_filled),
-                      onTap: () => _open(
-                        'https://github.com/sheikhhaziq/gyawun_music/issues/new?template=bug_report.yml',
-                      ),
-                    ),
-                    ExpressiveListTile(
-                      leading: const SettingsColorIcon(icon: Icons.description),
-                      title: const Text("Feature Request"),
-                      trailing: const Icon(FluentIcons.chevron_right_24_filled),
-                      onTap: () => _open(
-                        'https://github.com/sheikhhaziq/gyawun_music/discussions',
-                      ),
+                      onTap: () => _open('https://t.me/SURAJ_EduMaster'),
                     ),
                   ],
                 ),

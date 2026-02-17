@@ -4,10 +4,10 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:gyawun/core/widgets/internet_guard.dart';
-import 'package:gyawun/core/utils/service_locator.dart';
-import 'package:gyawun/screens/browse/cubit/browse_cubit.dart';
-import 'package:gyawun/core/widgets/section_item.dart';
+import 'package:songify/core/widgets/internet_guard.dart';
+import 'package:songify/core/utils/service_locator.dart';
+import 'package:songify/screens/browse/cubit/browse_cubit.dart';
+import 'package:songify/core/widgets/section_item.dart';
 import 'package:loading_indicator_m3e/loading_indicator_m3e.dart';
 
 import '../../generated/l10n.dart';

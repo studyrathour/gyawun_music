@@ -1,13 +1,13 @@
 // import 'package:expandable_text/expandable_text.dart';
 // import 'package:flutter/material.dart';
 // import 'package:get_it/get_it.dart';
-// import 'package:gyawun/generated/l10n.dart';
-// import 'package:gyawun/services/download_manager.dart';
-// import 'package:gyawun/services/media_player.dart';
-// import 'package:gyawun/utils/adaptive_widgets/listtile.dart';
-// import 'package:gyawun/utils/bottom_modals.dart';
-// import 'package:gyawun/utils/extensions.dart';
-// import 'package:gyawun/utils/song_thumbnail.dart';
+// import 'package:songify/generated/l10n.dart';
+// import 'package:songify/services/download_manager.dart';
+// import 'package:songify/services/media_player.dart';
+// import 'package:songify/utils/adaptive_widgets/listtile.dart';
+// import 'package:songify/utils/bottom_modals.dart';
+// import 'package:songify/utils/extensions.dart';
+// import 'package:songify/utils/song_thumbnail.dart';
 
 // class DownloadedSongTile extends StatelessWidget {
 //   const DownloadedSongTile({required this.song, super.key});

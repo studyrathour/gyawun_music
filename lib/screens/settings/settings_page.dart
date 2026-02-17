@@ -5,10 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:gyawun/core/widgets/expressive_app_bar.dart';
-import 'package:gyawun/core/widgets/expressive_list_group.dart';
-import 'package:gyawun/core/widgets/expressive_list_tile.dart';
-import 'package:gyawun/services/update_service/update_service.dart';
+import 'package:songify/core/widgets/expressive_app_bar.dart';
+import 'package:songify/core/widgets/expressive_list_group.dart';
+import 'package:songify/core/widgets/expressive_list_tile.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../generated/l10n.dart';
@@ -141,30 +140,6 @@ class SettingsPage extends StatelessWidget {
                             title: Text(S.of(context).About),
                             subtitle: Text('App info, support & links'),
                             onTap: () => context.go('/settings/about'),
-                            trailing: const Icon(
-                              FluentIcons.chevron_right_24_filled,
-                            ),
-                          ),
-                          ExpressiveListTile(
-                            leading: SettingsColorIcon(
-                              icon: FluentIcons.arrow_circle_up_24_filled,
-                              color: const Color.fromARGB(155, 115, 46, 62),
-                            ),
-                            title: Text(S.of(context).Check_For_Update),
-                            subtitle: Text('Check GitHub for releases'),
-                            onTap: () => UpdateService.manualCheck(context),
-                            trailing: const Icon(
-                              FluentIcons.chevron_right_24_filled,
-                            ),
-                          ),
-                          ExpressiveListTile(
-                            leading: SettingsColorIcon(
-                              icon: FluentIcons.money_24_filled,
-                              color: const Color.fromARGB(155, 46, 100, 115),
-                            ),
-                            title: Text(S.of(context).Donate),
-                            subtitle: Text(S.of(context).Donate_Message),
-                            onTap: () => showPaymentsModal(context),
                             trailing: const Icon(
                               FluentIcons.chevron_right_24_filled,
                             ),

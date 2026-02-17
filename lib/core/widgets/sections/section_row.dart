@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gyawun/core/widgets/tiles/section_row_tile.dart';
+import 'package:songify/core/widgets/tiles/section_row_tile.dart';
 
 class SectionRow extends StatelessWidget {
   const SectionRow({super.key,required this.items});

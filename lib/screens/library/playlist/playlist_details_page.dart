@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:get_it/get_it.dart';
-import 'package:gyawun/core/widgets/expressive_app_bar.dart';
-import 'package:gyawun/core/widgets/song_tile.dart';
-import 'package:gyawun/services/media_player.dart';
-import 'package:gyawun/themes/text_styles.dart';
+import 'package:songify/core/widgets/expressive_app_bar.dart';
+import 'package:songify/core/widgets/song_tile.dart';
+import 'package:songify/services/media_player.dart';
+import 'package:songify/themes/text_styles.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../../utils/bottom_modals.dart';

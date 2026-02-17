@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:gyawun/services/download_manager.dart';
+import 'package:songify/services/download_manager.dart';
 
 part 'download_playlist_state.dart';
 

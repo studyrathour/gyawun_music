@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:gyawun/services/media_player.dart';
-import 'package:gyawun/utils/bottom_modals.dart';
+import 'package:songify/services/media_player.dart';
+import 'package:songify/utils/bottom_modals.dart';
 
 class SectionRowTile extends StatelessWidget {
   const SectionRowTile({super.key, required this.item});

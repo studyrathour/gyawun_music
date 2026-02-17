@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:gyawun/core/extensions/string_extensions.dart';
-import 'package:gyawun/core/utils/expressive_sheet.dart';
-import 'package:gyawun/core/widgets/expressive_app_bar.dart';
-import 'package:gyawun/core/widgets/expressive_list_group.dart';
-import 'package:gyawun/core/widgets/expressive_list_tile.dart';
-import 'package:gyawun/core/widgets/expressive_switch_list_tile.dart';
-import 'package:gyawun/generated/l10n.dart';
-import 'package:gyawun/screens/settings/widgets/color_icon.dart';
-import 'package:gyawun/services/settings_manager.dart';
-import 'package:gyawun/utils/bottom_modals.dart';
+import 'package:songify/core/extensions/string_extensions.dart';
+import 'package:songify/core/utils/expressive_sheet.dart';
+import 'package:songify/core/widgets/expressive_app_bar.dart';
+import 'package:songify/core/widgets/expressive_list_group.dart';
+import 'package:songify/core/widgets/expressive_list_tile.dart';
+import 'package:songify/core/widgets/expressive_switch_list_tile.dart';
+import 'package:songify/generated/l10n.dart';
+import 'package:songify/screens/settings/widgets/color_icon.dart';
+import 'package:songify/services/settings_manager.dart';
+import 'package:songify/utils/bottom_modals.dart';
 
 import 'cubit/ytmusic_cubit.dart';
 

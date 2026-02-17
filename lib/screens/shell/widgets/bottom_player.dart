@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:gyawun/services/media_player.dart';
-import 'package:gyawun/utils/adaptive_widgets/buttons.dart';
-import 'package:gyawun/utils/adaptive_widgets/listtile.dart';
-import 'package:gyawun/utils/adaptive_widgets/progress_ring.dart';
-import 'package:gyawun/utils/song_thumbnail.dart';
+import 'package:songify/services/media_player.dart';
+import 'package:songify/utils/adaptive_widgets/buttons.dart';
+import 'package:songify/utils/adaptive_widgets/listtile.dart';
+import 'package:songify/utils/adaptive_widgets/progress_ring.dart';
+import 'package:songify/utils/song_thumbnail.dart';
 import 'package:provider/provider.dart';
 
 class BottomPlayer extends StatelessWidget {

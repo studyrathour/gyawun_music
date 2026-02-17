@@ -3,9 +3,9 @@ import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:gyawun/services/update_service/models/update_info.dart';
-import 'package:gyawun/services/update_service/widgets/update_checking.dart';
-import 'package:gyawun/services/update_service/widgets/update_dialog.dart';
+import 'package:songify/services/update_service/models/update_info.dart';
+import 'package:songify/services/update_service/widgets/update_checking.dart';
+import 'package:songify/services/update_service/widgets/update_dialog.dart';
 import 'package:http/http.dart' as http;
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:pub_semver/pub_semver.dart';

@@ -1,6 +1,6 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:gyawun/core/widgets/expressive_list_tile.dart';
+import 'package:songify/core/widgets/expressive_list_tile.dart';
 
 class ExpressiveSheetOption<T> {
   final String label;

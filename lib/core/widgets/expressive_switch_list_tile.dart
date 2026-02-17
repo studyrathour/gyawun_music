@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gyawun/core/widgets/expressive_list_tile.dart';
+import 'package:songify/core/widgets/expressive_list_tile.dart';
 
 class ExpressiveSwitchListTile extends StatelessWidget {
   final bool value;

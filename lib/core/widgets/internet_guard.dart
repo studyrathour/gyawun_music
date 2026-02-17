@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
-import 'package:gyawun/generated/l10n.dart';
-import 'package:gyawun/themes/colors.dart';
-import 'package:gyawun/utils/adaptive_widgets/buttons.dart';
-import 'package:gyawun/utils/adaptive_widgets/icons.dart';
+import 'package:songify/generated/l10n.dart';
+import 'package:songify/themes/colors.dart';
+import 'package:songify/utils/adaptive_widgets/buttons.dart';
+import 'package:songify/utils/adaptive_widgets/icons.dart';
 
 class InternetGuard extends StatefulWidget {
   final Widget child;

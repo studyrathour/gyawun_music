@@ -1,11 +1,11 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gyawun/core/widgets/expressive_app_bar.dart';
-import 'package:gyawun/core/widgets/expressive_list_group.dart';
-import 'package:gyawun/core/widgets/expressive_list_tile.dart';
-import 'package:gyawun/core/widgets/expressive_switch_list_tile.dart';
-import 'package:gyawun/screens/settings/widgets/color_icon.dart';
+import 'package:songify/core/widgets/expressive_app_bar.dart';
+import 'package:songify/core/widgets/expressive_list_group.dart';
+import 'package:songify/core/widgets/expressive_list_tile.dart';
+import 'package:songify/core/widgets/expressive_switch_list_tile.dart';
+import 'package:songify/screens/settings/widgets/color_icon.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../utils/bottom_modals.dart';
