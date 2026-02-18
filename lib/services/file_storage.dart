@@ -35,7 +35,7 @@ class FileStorage {
           .get('APP_FOLDER', defaultValue: FileStorage.defaultPath));
     } else if (Platform.isWindows) {
       directory =
-          Directory(path.join((await getDownloadsDirectory())!.path, 'Gyawun'));
+          Directory(path.join((await getDownloadsDirectory())!.path, 'Songify'));
     } else {
       directory = await getApplicationDocumentsDirectory();
     }
@@ -55,10 +55,10 @@ class FileStorage {
     if (Platform.isAndroid) {
       directory = Directory(Hive.box('SETTINGS')
               .get('APP_FOLDER', defaultValue: FileStorage.defaultPath) +
-          '/Gyawun');
+          '/Songify');
     } else if (Platform.isWindows) {
       directory =
-          Directory(path.join((await getDownloadsDirectory())!.path, 'Gyawun'));
+          Directory(path.join((await getDownloadsDirectory())!.path, 'Songify'));
     } else {
       directory = await getApplicationDocumentsDirectory();
     }
@@ -164,7 +164,7 @@ class FileStorage {
     final file = picker.files[0].xFile;
     String data = await file.readAsString();
     Map backup = jsonDecode(data);
-    if (backup['name'] != 'Gyawun' && backup['type'] != 'backup') {
+    if (backup['name'] != 'Songify' && backup['type'] != 'backup') {
       return false;
     }
     Map? settings = backup['data']?['settings'];

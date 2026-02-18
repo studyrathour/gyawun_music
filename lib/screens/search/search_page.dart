@@ -109,7 +109,7 @@ class _SearchPageState extends State<_SearchPage> {
                                       vertical: 2, horizontal: 8),
                                   borderRadius: BorderRadius.circular(
                                       Platform.isWindows ? 4.0 : 35),
-                                  hintText: S.of(context).Search_Gyawun,
+                                  hintText: S.of(context).Search_Songify,
                                   prefix: constraints.maxWidth > 400
                                       ? null
                                       : const AdaptiveBackButton(),

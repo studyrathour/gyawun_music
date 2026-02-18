@@ -60,7 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Salvataggio dati riuscito al percorso",
     ),
     "Battery_Optimisation_message": MessageLookupByLibrary.simpleMessage(
-      "Clicca qui per disattivare l’ottimizzazione della batteria e permettere a Gyawun di funzionare correttamente",
+      "Clicca qui per disattivare l’ottimizzazione della batteria e permettere a Songify di funzionare correttamente",
     ),
     "Battery_Optimisation_title": MessageLookupByLibrary.simpleMessage(
       "Ottimizzazione batteria rilevata",
@@ -112,7 +112,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Developer": MessageLookupByLibrary.simpleMessage("Sviluppatore"),
     "Donate": MessageLookupByLibrary.simpleMessage("Dona"),
     "Donate_Message": MessageLookupByLibrary.simpleMessage(
-      "Supporta lo sviluppo di Gyawun",
+      "Supporta lo sviluppo di Songify",
     ),
     "Done": MessageLookupByLibrary.simpleMessage("Fatto"),
     "Download": MessageLookupByLibrary.simpleMessage("Download"),
@@ -142,7 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "FileNotFound": MessageLookupByLibrary.simpleMessage("File non trovato"),
     "Go_To_Downloads": MessageLookupByLibrary.simpleMessage("Vai a Download"),
     "Google_Account": MessageLookupByLibrary.simpleMessage("Account Google"),
-    "Gyawun": MessageLookupByLibrary.simpleMessage("Gyawun"),
+    "Songify": MessageLookupByLibrary.simpleMessage("Songify"),
     "High": MessageLookupByLibrary.simpleMessage("Alta"),
     "History": MessageLookupByLibrary.simpleMessage("Cronologia"),
     "Home": MessageLookupByLibrary.simpleMessage("Home"),
@@ -226,7 +226,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Retry": MessageLookupByLibrary.simpleMessage("Riprova"),
     "Save": MessageLookupByLibrary.simpleMessage("Salva"),
     "Saved": MessageLookupByLibrary.simpleMessage("Salvati"),
-    "Search_Gyawun": MessageLookupByLibrary.simpleMessage("Cerca in Gyawun"),
+    "Search_Songify": MessageLookupByLibrary.simpleMessage("Cerca in Songify"),
     "Search_History_Deleted": MessageLookupByLibrary.simpleMessage(
       "Cronologia di ricerca eliminata",
     ),

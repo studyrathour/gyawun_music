@@ -56,7 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Backed up successfully at",
     ),
     "Battery_Optimisation_message": MessageLookupByLibrary.simpleMessage(
-      "Click here disable battery optimisation for Gyawun to work properly",
+      "Click here disable battery optimisation for Songify to work properly",
     ),
     "Battery_Optimisation_title": MessageLookupByLibrary.simpleMessage(
       "Battery Optimisation Detected",
@@ -106,7 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Developer": MessageLookupByLibrary.simpleMessage("Developer"),
     "Donate": MessageLookupByLibrary.simpleMessage("Donate"),
     "Donate_Message": MessageLookupByLibrary.simpleMessage(
-      "Support the development of Gyawun",
+      "Support the development of Songify",
     ),
     "Done": MessageLookupByLibrary.simpleMessage("Done"),
     "Download": MessageLookupByLibrary.simpleMessage("Download"),
@@ -134,7 +134,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "FileNotFound": MessageLookupByLibrary.simpleMessage("File not found"),
     "Go_To_Downloads": MessageLookupByLibrary.simpleMessage("Go to Downloads"),
     "Google_Account": MessageLookupByLibrary.simpleMessage("Google Account"),
-    "Gyawun": MessageLookupByLibrary.simpleMessage("Gyawun"),
+    "Songify": MessageLookupByLibrary.simpleMessage("Songify"),
     "High": MessageLookupByLibrary.simpleMessage("High"),
     "History": MessageLookupByLibrary.simpleMessage("History"),
     "Home": MessageLookupByLibrary.simpleMessage("Home"),
@@ -212,7 +212,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Retry": MessageLookupByLibrary.simpleMessage("Retry"),
     "Save": MessageLookupByLibrary.simpleMessage("Save"),
     "Saved": MessageLookupByLibrary.simpleMessage("Saved"),
-    "Search_Gyawun": MessageLookupByLibrary.simpleMessage("Search Gyawun"),
+    "Search_Songify": MessageLookupByLibrary.simpleMessage("Search Songify"),
     "Search_History_Deleted": MessageLookupByLibrary.simpleMessage(
       "Search History Deleted",
     ),

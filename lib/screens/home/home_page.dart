@@ -85,7 +85,7 @@ class _HomePageState extends State<_HomePage> {
                           borderRadius: BorderRadius.circular(
                             Platform.isWindows ? 4.0 : 35,
                           ),
-                          hintText: S.of(context).Search_Gyawun,
+                          hintText: S.of(context).Search_Songify,
                           prefix: Icon(AdaptiveIcons.search),
                         ),
                       ),
