@@ -89,11 +89,15 @@ class _PlayerPageState extends State<PlayerPage> {
   }
 
   Future<void> updateBackgroundColor(ImageProvider image) async {
+    if (mounted) {
+      setState(() {
+        backgroundImage = image;
+      });
+    }
     final c = await ColorScheme.fromImageProvider(provider: image);
     if (mounted) {
       setState(() {
         color = c.primary;
-        backgroundImage = image;
       });
     }
   }
