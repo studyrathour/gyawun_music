@@ -3,9 +3,9 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:gyawun/core/widgets/library_tile.dart';
-import 'package:gyawun/services/media_player.dart';
-import 'package:gyawun/utils/bottom_modals.dart';
+import 'package:songify/core/widgets/library_tile.dart';
+import 'package:songify/services/media_player.dart';
+import 'package:songify/utils/bottom_modals.dart';
 
 class SongTile extends StatelessWidget {
   const SongTile({required this.song, this.playlistId, super.key});

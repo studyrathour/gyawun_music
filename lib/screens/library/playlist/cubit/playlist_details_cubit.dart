@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:gyawun/services/library.dart';
+import 'package:songify/services/library.dart';
 
 part 'playlist_details_state.dart';
 

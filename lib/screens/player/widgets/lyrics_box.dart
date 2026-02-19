@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lyric/lyrics_reader.dart';
 import 'package:get_it/get_it.dart';
-import 'package:gyawun/services/lyrics.dart';
-import 'package:gyawun/services/media_player.dart';
+import 'package:songify/services/lyrics.dart';
+import 'package:songify/services/media_player.dart';
 import 'package:hive/hive.dart';
 import 'package:just_audio_background/just_audio_background.dart';
-import 'package:gyawun/services/settings_manager.dart';
+import 'package:songify/services/settings_manager.dart';
 import 'package:loading_indicator_m3e/loading_indicator_m3e.dart';
 import 'package:provider/provider.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';

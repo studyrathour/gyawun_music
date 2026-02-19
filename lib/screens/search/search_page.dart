@@ -7,9 +7,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:gyawun/core/widgets/internet_guard.dart';
-import 'package:gyawun/core/utils/service_locator.dart';
-import 'package:gyawun/screens/search/cubit/search_cubit.dart';
+import 'package:songify/core/widgets/internet_guard.dart';
+import 'package:songify/core/utils/service_locator.dart';
+import 'package:songify/screens/search/cubit/search_cubit.dart';
 import 'package:loading_indicator_m3e/loading_indicator_m3e.dart';
 
 import '../../../generated/l10n.dart';
@@ -109,7 +109,7 @@ class _SearchPageState extends State<_SearchPage> {
                                       vertical: 2, horizontal: 8),
                                   borderRadius: BorderRadius.circular(
                                       Platform.isWindows ? 4.0 : 35),
-                                  hintText: S.of(context).Search_Gyawun,
+                                  hintText: S.of(context).Search_Songify,
                                   prefix: constraints.maxWidth > 400
                                       ? null
                                       : const AdaptiveBackButton(),

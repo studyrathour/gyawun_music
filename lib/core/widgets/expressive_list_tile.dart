@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gyawun/core/widgets/expressive_list_group.dart';
+import 'package:songify/core/widgets/expressive_list_group.dart';
 
 class ExpressiveListTile extends StatelessWidget {
   final Widget title;

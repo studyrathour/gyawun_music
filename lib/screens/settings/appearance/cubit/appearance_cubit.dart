@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:gyawun/services/settings_manager.dart';
+import 'package:songify/services/settings_manager.dart';
 
 part 'appearance_state.dart';
 

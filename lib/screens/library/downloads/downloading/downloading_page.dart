@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gyawun/screens/library/downloads/downloading/widgets/downloading_section_tile.dart';
+import 'package:songify/screens/library/downloads/downloading/widgets/downloading_section_tile.dart';
 
 import '../../../../../generated/l10n.dart';
 import 'cubit/downloading_cubit.dart';

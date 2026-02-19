@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
-import 'package:gyawun/themes/theme.dart';
+import 'package:songify/themes/theme.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:just_audio_background/just_audio_background.dart';
 import 'package:just_audio_media_kit/just_audio_media_kit.dart';
@@ -27,71 +27,91 @@ import 'utils/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (Platform.isAndroid) {
-    await JustAudioBackground.init(
-      androidNotificationChannelId: 'com.jhelum.gyawun.audio',
-      androidNotificationChannelName: 'Audio playback',
-      androidNotificationOngoing: true,
-      // androidStopForegroundOnPause: false,
+  try {
+    if (Platform.isAndroid) {
+      await JustAudioBackground.init(
+        androidNotificationChannelId: 'com.songify.app.audio',
+        androidNotificationChannelName: 'Audio playback',
+        androidNotificationOngoing: true,
+        // androidStopForegroundOnPause: false,
+      );
+    }
+
+    if (Platform.isWindows || Platform.isLinux) {
+      JustAudioMediaKit.ensureInitialized();
+      JustAudioMediaKit.bufferSize = 8 * 1024 * 1024;
+      JustAudioMediaKit.title = 'Songify';
+      JustAudioMediaKit.prefetchPlaylist = true;
+      JustAudioMediaKit.pitch = true;
+    }
+    await initialiseHive();
+    await SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.edgeToEdge,
+      overlays: [SystemUiOverlay.top],
     );
+
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+
+    final ytConfig = await getYtConfig();
+    YTMusic ytMusic = YTMusic(
+        config: ytConfig ??
+            YTConfig(
+                visitorData: '',
+                language: 'en',
+                location: 'IN',
+                apiKey: '',
+                clientName: 'WEB_REMIX',
+                clientVersion: '1.20230914.01.00'));
+
+    final GlobalKey<NavigatorState> panelKey = GlobalKey<NavigatorState>();
+
+    await FileStorage.initialise();
+    FileStorage fileStorage = FileStorage();
+    SettingsManager settingsManager = SettingsManager();
+
+    GetIt.I.registerSingleton<SettingsManager>(settingsManager);
+    MediaPlayer mediaPlayer = MediaPlayer();
+    GetIt.I.registerSingleton<MediaPlayer>(mediaPlayer);
+    LibraryService libraryService = LibraryService();
+    GetIt.I.registerSingleton<DownloadManager>(DownloadManager());
+    GetIt.I.registerSingleton(panelKey);
+    GetIt.I.registerSingleton<YTMusic>(ytMusic);
+
+    GetIt.I.registerSingleton<FileStorage>(fileStorage);
+
+    GetIt.I.registerSingleton<LibraryService>(libraryService);
+    GetIt.I.registerSingleton<Lyrics>(Lyrics());
+
+    runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => settingsManager),
+          ChangeNotifierProvider(create: (_) => mediaPlayer),
+          ChangeNotifierProvider(create: (_) => libraryService),
+        ],
+        child: const Songify(),
+      ),
+    );
+  } catch (e) {
+    debugPrint("Error initializing app: $e");
+    // Attempt to run app anyway to avoid stuck splash
+    runApp(const MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Text('Error initializing app. Check logs.'),
+        ),
+      ),
+    ));
   }
-
-  if (Platform.isWindows || Platform.isLinux) {
-    JustAudioMediaKit.ensureInitialized();
-    JustAudioMediaKit.bufferSize = 8 * 1024 * 1024;
-    JustAudioMediaKit.title = 'Gyawun Music';
-    JustAudioMediaKit.prefetchPlaylist = true;
-    JustAudioMediaKit.pitch = true;
-  }
-  await initialiseHive();
-  await SystemChrome.setEnabledSystemUIMode(
-    SystemUiMode.edgeToEdge,
-    overlays: [SystemUiOverlay.top],
-  );
-
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.landscapeRight,
-  ]);
-
-  final ytConfig = await getYtConfig();
-  YTMusic ytMusic = YTMusic(config: ytConfig!);
-
-  final GlobalKey<NavigatorState> panelKey = GlobalKey<NavigatorState>();
-
-  await FileStorage.initialise();
-  FileStorage fileStorage = FileStorage();
-  SettingsManager settingsManager = SettingsManager();
-
-  GetIt.I.registerSingleton<SettingsManager>(settingsManager);
-  MediaPlayer mediaPlayer = MediaPlayer();
-  GetIt.I.registerSingleton<MediaPlayer>(mediaPlayer);
-  LibraryService libraryService = LibraryService();
-  GetIt.I.registerSingleton<DownloadManager>(DownloadManager());
-  GetIt.I.registerSingleton(panelKey);
-  GetIt.I.registerSingleton<YTMusic>(ytMusic);
-
-  GetIt.I.registerSingleton<FileStorage>(fileStorage);
-
-  GetIt.I.registerSingleton<LibraryService>(libraryService);
-  GetIt.I.registerSingleton<Lyrics>(Lyrics());
-
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => settingsManager),
-        ChangeNotifierProvider(create: (_) => mediaPlayer),
-        ChangeNotifierProvider(create: (_) => libraryService),
-      ],
-      child: const Gyawun(),
-    ),
-  );
 }
 
-class Gyawun extends StatelessWidget {
-  const Gyawun({super.key});
+class Songify extends StatelessWidget {
+  const Songify({super.key});
   @override
   Widget build(BuildContext context) {
     return DynamicColorBuilder(
@@ -101,14 +121,14 @@ class Gyawun extends StatelessWidget {
                     darkScheme != null
                 ? darkScheme.primary
                 : context.watch<SettingsManager>().accentColor) ??
-            Colors.red;
+            const Color(0xFF4725f4);
         final isPureBlack = context.watch<SettingsManager>().amoledBlack;
         return Shortcuts(
           shortcuts: <LogicalKeySet, Intent>{
             LogicalKeySet(LogicalKeyboardKey.select): const ActivateIntent(),
           },
           child: MaterialApp.router(
-            title: 'Gyawun Music',
+            title: 'Songify',
             routerConfig: router,
             locale: Locale(context.watch<SettingsManager>().language['value']!),
             localizationsDelegates: const [
@@ -164,43 +184,50 @@ Future<void> initialiseHive() async {
 }
 
 Future<YTConfig?>? getYtConfig() async {
-  String? visitorData = await Hive.box('SETTINGS').get('VISITOR_ID');
-  String language = await Hive.box(
-    'SETTINGS',
-  ).get('YT_LANGUAGE', defaultValue: 'en');
-  String location = await Hive.box(
-    'SETTINGS',
-  ).get('YT_LOCATION', defaultValue: 'IN');
-  String? apikey = await Hive.box(
-    'SETTINGS',
-  ).get('YT_API_KEY', defaultValue: null);
-  String clientName = await Hive.box(
-    'SETTINGS',
-  ).get('YT_CLIENT_NAME', defaultValue: 'WEB_REMIX');
-  String? clientVersion = await Hive.box(
-    'SETTINGS',
-  ).get('YT_CLIENT_VERSION', defaultValue: null);
+  try {
+    String? visitorData = await Hive.box('SETTINGS').get('VISITOR_ID');
+    String language = await Hive.box(
+      'SETTINGS',
+    ).get('YT_LANGUAGE', defaultValue: 'en');
+    String location = await Hive.box(
+      'SETTINGS',
+    ).get('YT_LOCATION', defaultValue: 'IN');
+    String? apikey = await Hive.box(
+      'SETTINGS',
+    ).get('YT_API_KEY', defaultValue: null);
+    String clientName = await Hive.box(
+      'SETTINGS',
+    ).get('YT_CLIENT_NAME', defaultValue: 'WEB_REMIX');
+    String? clientVersion = await Hive.box(
+      'SETTINGS',
+    ).get('YT_CLIENT_VERSION', defaultValue: null);
 
-  if (visitorData == null || apikey == null || clientVersion == null) {
-    final config = await YTClient.getConfig();
-    final box = Hive.box('SETTINGS');
-    await box.putAll({
-      'VISITOR_ID': visitorData ?? config?.visitorData,
-      'YT_LOCATION': location,
-      'YT_LANGUAGE': language,
-      'YT_API_KEY': config?.apiKey,
-      'YT_CLIENT_NAME': config?.clientName,
-      'YT_CLIENT_VERSION': config?.clientVersion,
-    });
-    return config;
-  } else {
-    return YTConfig(
-      visitorData: visitorData,
-      language: language,
-      location: location,
-      apiKey: apikey,
-      clientName: clientName,
-      clientVersion: clientVersion,
-    );
+    if (visitorData == null || apikey == null || clientVersion == null) {
+      final config = await YTClient.getConfig();
+      if (config != null) {
+        final box = Hive.box('SETTINGS');
+        await box.putAll({
+          'VISITOR_ID': visitorData ?? config.visitorData,
+          'YT_LOCATION': location,
+          'YT_LANGUAGE': language,
+          'YT_API_KEY': config.apiKey,
+          'YT_CLIENT_NAME': config.clientName,
+          'YT_CLIENT_VERSION': config.clientVersion,
+        });
+      }
+      return config;
+    } else {
+      return YTConfig(
+        visitorData: visitorData,
+        language: language,
+        location: location,
+        apiKey: apikey,
+        clientName: clientName,
+        clientVersion: clientVersion,
+      );
+    }
+  } catch (e) {
+    debugPrint("Error fetching YT Config: $e");
+    return null;
   }
 }

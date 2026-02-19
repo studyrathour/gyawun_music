@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:gyawun/screens/settings/player/equalizer/cubit/equalizer_cubit.dart';
-import 'package:gyawun/screens/settings/player/equalizer/cubit/equalizer_state.dart';
-import 'package:gyawun/screens/settings/player/equalizer/cubit/loudness_cubit.dart';
-import 'package:gyawun/screens/settings/player/equalizer/cubit/loudness_state.dart';
-import 'package:gyawun/generated/l10n.dart';
-import 'package:gyawun/screens/settings/widgets/setting_item.dart';
-import 'package:gyawun/services/media_player.dart';
-import 'package:gyawun/services/settings_manager.dart';
-import 'package:gyawun/themes/text_styles.dart';
-import 'package:gyawun/utils/adaptive_widgets/slider.dart';
+import 'package:songify/screens/settings/player/equalizer/cubit/equalizer_cubit.dart';
+import 'package:songify/screens/settings/player/equalizer/cubit/equalizer_state.dart';
+import 'package:songify/screens/settings/player/equalizer/cubit/loudness_cubit.dart';
+import 'package:songify/screens/settings/player/equalizer/cubit/loudness_state.dart';
+import 'package:songify/generated/l10n.dart';
+import 'package:songify/screens/settings/widgets/setting_item.dart';
+import 'package:songify/services/media_player.dart';
+import 'package:songify/services/settings_manager.dart';
+import 'package:songify/themes/text_styles.dart';
+import 'package:songify/utils/adaptive_widgets/slider.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:loading_indicator_m3e/loading_indicator_m3e.dart';
 

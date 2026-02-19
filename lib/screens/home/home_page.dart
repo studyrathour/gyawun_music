@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:gyawun/core/widgets/internet_guard.dart';
-import 'package:gyawun/core/utils/service_locator.dart';
-import 'package:gyawun/screens/home/cubit/home_cubit.dart';
-import 'package:gyawun/core/widgets/section_item.dart';
-import 'package:gyawun/screens/home/widgets/chips_row.dart';
+import 'package:songify/core/widgets/internet_guard.dart';
+import 'package:songify/core/utils/service_locator.dart';
+import 'package:songify/screens/home/cubit/home_cubit.dart';
+import 'package:songify/core/widgets/section_item.dart';
+import 'package:songify/screens/home/widgets/chips_row.dart';
 import 'package:m3e_collection/m3e_collection.dart';
 
 import '../../generated/l10n.dart';
@@ -85,7 +85,7 @@ class _HomePageState extends State<_HomePage> {
                           borderRadius: BorderRadius.circular(
                             Platform.isWindows ? 4.0 : 35,
                           ),
-                          hintText: S.of(context).Search_Gyawun,
+                          hintText: S.of(context).Search_Songify,
                           prefix: Icon(AdaptiveIcons.search),
                         ),
                       ),

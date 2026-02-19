@@ -54,9 +54,9 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Gyawun`
-  String get Gyawun {
-    return Intl.message('Gyawun', name: 'Gyawun', desc: '', args: []);
+  /// `Songify`
+  String get Songify {
+    return Intl.message('Songify', name: 'Songify', desc: '', args: []);
   }
 
   /// `Next Up`
@@ -89,11 +89,11 @@ class S {
     return Intl.message('Settings', name: 'Settings', desc: '', args: []);
   }
 
-  /// `Search Gyawun`
-  String get Search_Gyawun {
+  /// `Search Songify`
+  String get Search_Songify {
     return Intl.message(
-      'Search Gyawun',
-      name: 'Search_Gyawun',
+      'Search Songify',
+      name: 'Search_Songify',
       desc: '',
       args: [],
     );
@@ -177,10 +177,10 @@ class S {
     );
   }
 
-  /// `Click here disable battery optimisation for Gyawun to work properly`
+  /// `Click here disable battery optimisation for Songify to work properly`
   String get Battery_Optimisation_message {
     return Intl.message(
-      'Click here disable battery optimisation for Gyawun to work properly',
+      'Click here disable battery optimisation for Songify to work properly',
       name: 'Battery_Optimisation_message',
       desc: '',
       args: [],
@@ -192,10 +192,10 @@ class S {
     return Intl.message('Donate', name: 'Donate', desc: '', args: []);
   }
 
-  /// `Support the development of Gyawun`
+  /// `Support the development of Songify`
   String get Donate_Message {
     return Intl.message(
-      'Support the development of Gyawun',
+      'Support the development of Songify',
       name: 'Donate_Message',
       desc: '',
       args: [],

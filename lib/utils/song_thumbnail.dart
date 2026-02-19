@@ -1,7 +1,7 @@
 import 'package:audiotags/audiotags.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:gyawun/utils/enhanced_image.dart';
+import 'package:songify/utils/enhanced_image.dart';
 
 class SongThumbnail extends StatefulWidget {
   final Map song;

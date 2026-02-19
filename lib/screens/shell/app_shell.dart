@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:gyawun/services/update_service/update_service.dart';
+import 'package:songify/services/update_service/update_service.dart';
 import 'package:navigation_rail_m3e/navigation_rail_m3e.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 

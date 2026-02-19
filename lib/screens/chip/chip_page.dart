@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gyawun/core/widgets/expressive_app_bar.dart';
-import 'package:gyawun/core/widgets/internet_guard.dart';
-import 'package:gyawun/core/utils/service_locator.dart';
-import 'package:gyawun/screens/chip/cubit/chip_cubit.dart';
-import 'package:gyawun/core/widgets/section_item.dart';
+import 'package:songify/core/widgets/expressive_app_bar.dart';
+import 'package:songify/core/widgets/internet_guard.dart';
+import 'package:songify/core/utils/service_locator.dart';
+import 'package:songify/screens/chip/cubit/chip_cubit.dart';
+import 'package:songify/core/widgets/section_item.dart';
 import 'package:loading_indicator_m3e/loading_indicator_m3e.dart';
 
 class ChipPage extends StatelessWidget {

@@ -6,11 +6,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get_it/get_it.dart';
-import 'package:gyawun/generated/l10n.dart';
-import 'package:gyawun/services/media_player.dart';
-import 'package:gyawun/themes/colors.dart';
-import 'package:gyawun/utils/adaptive_widgets/buttons.dart';
-import 'package:gyawun/utils/extensions.dart';
+import 'package:songify/generated/l10n.dart';
+import 'package:songify/services/media_player.dart';
+import 'package:songify/themes/colors.dart';
+import 'package:songify/utils/adaptive_widgets/buttons.dart';
+import 'package:songify/utils/extensions.dart';
 
 class MyPlayistHeader extends StatelessWidget {
   const MyPlayistHeader({

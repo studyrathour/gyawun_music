@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
-import 'package:gyawun/services/update_service/models/update_info.dart';
+import 'package:songify/services/update_service/models/update_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UpdateDialog extends StatelessWidget {
