@@ -14,6 +14,7 @@ import 'package:just_audio_background/just_audio_background.dart';
 import 'package:provider/provider.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:text_scroll/text_scroll.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:yt_music/ytmusic.dart';
 
 import '../../generated/l10n.dart';
@@ -39,7 +40,7 @@ class _PlayerPageState extends State<PlayerPage> {
   late PanelController panelController;
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   Color? color;
-  ImageProvider? image;
+  ImageProvider? backgroundImage;
   bool canPop = false;
   bool showLyrics = false;
   bool fetchedSong = false;
@@ -92,6 +93,7 @@ class _PlayerPageState extends State<PlayerPage> {
     if (mounted) {
       setState(() {
         color = c.primary;
+        backgroundImage = image;
       });
     }
   }
@@ -137,62 +139,119 @@ class _PlayerPageState extends State<PlayerPage> {
                   statusBarIconBrightness: Brightness.light,
                   systemNavigationBarColor: Colors.transparent,
                 ),
-                child: Container(
-                  color: Colors.black,
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeIn,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          (color ??
-                                  Theme.of(
-                                    context,
-                                  ).colorScheme.surfaceContainerLow)
-                              .withAlpha(200),
-                          (color ??
-                                  Theme.of(
-                                    context,
-                                  ).colorScheme.surfaceContainerLow)
-                              .withAlpha(80),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
+                child: Stack(
+                  children: [
+                    if (backgroundImage != null)
+                      Positioned.fill(
+                        child: Image(
+                          image: backgroundImage!,
+                          fit: BoxFit.cover,
+                          height: double.infinity,
+                          width: double.infinity,
+                          gaplessPlayback: true,
+                        ),
+                      ),
+                    Positioned.fill(
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 60, sigmaY: 60),
+                        child: Container(
+                          color: Colors.black.withOpacity(0.6),
+                        ),
                       ),
                     ),
-                    child: Scaffold(
-                      appBar: PreferredSize(
-                        preferredSize: AppBar().preferredSize,
-                        child: AppBar(
-                          backgroundColor: Colors.transparent,
-                          surfaceTintColor: Colors.transparent,
-                          elevation: 0,
-                          iconTheme: const IconThemeData(color: Colors.white),
-                          leading: AdaptiveIconButton(
-                            onPressed: () {
-                              context.pop();
-                            },
-                            icon: Icon(AdaptiveIcons.chevron_down),
-                          ),
-                          actions: [
-                            AdaptiveIconButton(
-                              onPressed: () {
-                                setState(() {
-                                  showLyrics = !showLyrics;
-                                });
-                              },
-                              icon: Icon(AdaptiveIcons.lyrics),
-                            ),
-                            if (MediaQuery.of(context).size.width >
-                                    MediaQuery.of(context).size.height ||
-                                Platform.isWindows)
-                              AdaptiveIconButton(
-                                onPressed: () {
-                                  _key.currentState?.openEndDrawer();
-                                },
-                                icon: Icon(AdaptiveIcons.queue),
-                              ),
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            (color ??
+                                    Theme.of(
+                                      context,
+                                    ).colorScheme.surfaceContainerLow)
+                                .withOpacity(0.4),
+                            (color ??
+                                    Theme.of(
+                                      context,
+                                    ).colorScheme.surfaceContainerLow)
+                                .withOpacity(0.8),
                           ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
+                    ),
+                    Scaffold(
+                      appBar: PreferredSize(
+                        preferredSize: const Size.fromHeight(80),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 32, bottom: 16, left: 24, right: 24),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.1),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: IconButton(
+                                  icon: const Icon(Icons.expand_more, color: Colors.white),
+                                  onPressed: () => context.pop(),
+                                ),
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    'NOW PLAYING',
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                      letterSpacing: 2.0,
+                                      color: Colors.white.withOpacity(0.6),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    currentSong?.title ?? '',
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  Text(
+                                    '${currentSong?.artist ?? ''} • ${currentSong?.album ?? ''}',
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      color: Colors.white.withOpacity(0.5),
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.1),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: IconButton(
+                                  icon: const Icon(Icons.more_horiz, color: Colors.white),
+                                  onPressed: () {
+                                      Modals.showPlayerOptionsModal(
+                                        context,
+                                        GetIt.I<MediaPlayer>().currentSongNotifier.value!.extras!,
+                                      );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       key: _key,
@@ -239,6 +298,8 @@ class _PlayerPageState extends State<PlayerPage> {
                                     width: maxWidth - (maxWidth / 2.3),
                                     height: maxHeight,
                                     isRow: true,
+                                    showLyrics: showLyrics,
+                                    setShowLyrics: setShowLyrics,
                                   ),
                                 ],
                               );
@@ -265,6 +326,8 @@ class _PlayerPageState extends State<PlayerPage> {
                                           maxHeight -
                                           min(maxWidth, maxHeight / 2.2) -
                                           24,
+                                      showLyrics: showLyrics,
+                                      setShowLyrics: setShowLyrics,
                                     ),
                                   ],
                                 ),
@@ -367,10 +430,10 @@ class _PlayerPageState extends State<PlayerPage> {
                         ),
                       ),
                     ),
+                    ],
                   ),
                 ),
               ),
-            ),
     );
   }
 }
@@ -448,12 +511,16 @@ class NameAndControls extends StatelessWidget {
     required this.height,
     required this.width,
     this.isRow = false,
+    required this.showLyrics,
+    required this.setShowLyrics,
     super.key,
   });
   final double width;
   final double height;
   final MediaItem? song;
   final bool isRow;
+  final bool showLyrics;
+  final Function setShowLyrics;
 
   @override
   Widget build(BuildContext context) {
@@ -465,7 +532,7 @@ class NameAndControls extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -497,39 +564,40 @@ class NameAndControls extends StatelessWidget {
                       progress: value.current,
                       total: value.total,
                       buffered: value.buffered,
-                      barHeight: 3,
-                      thumbRadius: 5,
+                      barHeight: 4,
+                      thumbRadius: 6,
+                      thumbColor: Colors.white,
+                      baseBarColor: Colors.white.withOpacity(0.2),
+                      progressBarColor: const Color(0xFF4725f4),
+                      bufferedBarColor: Colors.white.withOpacity(0.2),
                       onSeek: (value) => mediaPlayer.player.seek(value),
+                      timeLabelTextStyle: const TextStyle(
+                         color: Colors.white54,
+                         fontSize: 10,
+                         fontWeight: FontWeight.w500,
+                      ),
                     );
                   },
                 ),
+                const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ValueListenableBuilder(
-                      valueListenable: Hive.box('FAVOURITES').listenable(),
-                      builder: (context, value, child) {
-                        Map? item = value.get(song?.extras?['videoId']);
+                    StreamBuilder<bool>(
+                      stream: mediaPlayer.player.shuffleModeEnabledStream,
+                      builder: (context, snapshot) {
+                        final shuffleEnabled = snapshot.data ?? false;
                         return AdaptiveIconButton(
-                          icon: Icon(
-                            item == null
-                                ? AdaptiveIcons.heart
-                                : AdaptiveIcons.heart_fill,
-                            size: 30,
-                          ),
-                          onPressed: () async {
-                            if (item == null) {
-                              await Hive.box(
-                                'FAVOURITES',
-                              ).put(song!.extras!['videoId'], {
-                                ...song!.extras!,
-                                'createdAt':
-                                    DateTime.now().millisecondsSinceEpoch,
-                              });
-                            } else {
-                              await value.delete(song!.extras!['videoId']);
-                            }
+                          onPressed: () {
+                            mediaPlayer.player.setShuffleModeEnabled(!shuffleEnabled);
                           },
+                          icon: Icon(
+                            Icons.shuffle,
+                            size: 24,
+                            color: shuffleEnabled
+                                ? const Color(0xFF4725f4)
+                                : Colors.white.withOpacity(0.6),
+                          ),
                         );
                       },
                     ),
@@ -537,14 +605,14 @@ class NameAndControls extends StatelessWidget {
                       onPressed: () {
                         mediaPlayer.player.seekToPrevious();
                       },
-                      icon: Icon(AdaptiveIcons.skip_previous, size: 30),
+                      icon: const Icon(Icons.skip_previous, size: 32, color: Colors.white),
                     ),
-                    const PlayPauseButton(size: 40),
+                    const PlayPauseButton(size: 64),
                     AdaptiveIconButton(
                       onPressed: () {
                         mediaPlayer.player.seekToNext();
                       },
-                      icon: Icon(AdaptiveIcons.skip_next, size: 30),
+                      icon: const Icon(Icons.skip_next, size: 32, color: Colors.white),
                     ),
                     ValueListenableBuilder(
                       valueListenable: mediaPlayer.loopMode,
@@ -555,13 +623,13 @@ class NameAndControls extends StatelessWidget {
                           },
                           isSelected: value != LoopMode.off,
                           icon: Icon(
-                            value == LoopMode.off || value == LoopMode.all
-                                ? AdaptiveIcons.repeat_all
-                                : AdaptiveIcons.repeat_one,
-                            size: 30,
+                            value == LoopMode.one
+                                ? Icons.repeat_one
+                                : Icons.repeat,
+                            size: 24,
                             color: value == LoopMode.off
-                                ? Colors.white.withValues(alpha: 0.3)
-                                : null,
+                                ? Colors.white.withOpacity(0.6)
+                                : const Color(0xFF4725f4),
                           ),
                         );
                       },
@@ -570,63 +638,59 @@ class NameAndControls extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Padding(
+               padding: const EdgeInsets.only(top: 8),
+               child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                if (song != null)
-                  RepaintBoundary(
-                    child: ValueListenableBuilder(
-                      valueListenable: Hive.box(
-                        'DOWNLOADS',
-                      ).listenable(keys: [song!.id]),
-                      builder: (context, box, child) {
-                        final Map? item = box.get(song!.id);
-                        if (item != null) {
-                          if (item['status'] == 'DOWNLOADING') {
-                            final notifier =
-                                GetIt.I<DownloadManager>().getProgressNotifier(
-                                  song!.id,
-                                ) ??
-                                ValueNotifier(0.0);
-                            return ValueListenableBuilder(
-                              valueListenable: notifier,
-                              builder: (context, double progress, child) {
-                                return CircularProgressIndicator(
-                                  value:
-                                      item['status'] == 'DOWNLOADING' &&
-                                          progress > 0.0
-                                      ? progress
-                                      : null,
-                                  color: Colors.white,
-                                  backgroundColor: Colors.black,
-                                );
-                              },
-                            );
-                          } else if (item['status'] == 'DOWNLOADED') {
-                            return const Icon(Icons.download_done_outlined);
-                          }
-                        }
-                        return AdaptiveIconButton(
-                          onPressed: () {
-                            GetIt.I<DownloadManager>().downloadSong(
-                              song!.extras!,
-                            );
-                          },
-                          icon: Icon(AdaptiveIcons.download, size: 30),
-                        );
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.lyrics, color: showLyrics ? const Color(0xFF4725f4) : Colors.white.withOpacity(0.4)),
+                      onPressed: () {
+                        setShowLyrics();
                       },
                     ),
-                  ),
-                AdaptiveIconButton(
-                  onPressed: () {
-                    Modals.showPlayerOptionsModal(
-                      context,
-                      mediaPlayer.currentSongNotifier.value!.extras!,
-                    );
-                  },
-                  icon: Icon(AdaptiveIcons.more_vertical, size: 30),
+                  ],
+                ),
+                Column(
+                   mainAxisSize: MainAxisSize.min,
+                   children: [
+                     IconButton(
+                       icon: Icon(Icons.mic, color: Colors.white.withOpacity(0.4)),
+                       onPressed: () {
+                         // Feature not implemented
+                       },
+                     ),
+                   ],
+                ),
+                Column(
+                   mainAxisSize: MainAxisSize.min,
+                   children: [
+                     IconButton(
+                       icon: Icon(Icons.playlist_play, color: Colors.white.withOpacity(0.4)),
+                       onPressed: () {
+                          Scaffold.of(context).openEndDrawer();
+                       },
+                     ),
+                   ],
+                ),
+                Column(
+                   mainAxisSize: MainAxisSize.min,
+                   children: [
+                     IconButton(
+                       icon: Icon(Icons.share, color: Colors.white.withOpacity(0.4)),
+                       onPressed: () {
+                         if (song != null) {
+                           Share.share('Check out ${song?.title} by ${song?.artist} on Songify!');
+                         }
+                       },
+                     ),
+                   ],
                 ),
               ],
+            ),
             ),
             if (song != null && !isRow)
               SizedBox(height: 55 + MediaQuery.of(context).padding.bottom),
